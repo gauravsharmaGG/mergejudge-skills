@@ -1,0 +1,13 @@
+{
+  "lane": "review",
+  "base": "@@BASE@@",
+  "findings": [
+    {
+      "path": "migrations/0003_drop_column.sql",
+      "line": 2,
+      "rule": "policy: **/migrations/**",
+      "action": "flagged",
+      "note": "destructive DROP COLUMN migration; REVIEW.md raises migrations to review, a DBA must sign off before you push"
+    }
+  ]
+}

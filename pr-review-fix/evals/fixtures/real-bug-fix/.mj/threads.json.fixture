@@ -1,0 +1,81 @@
+{
+  "data": {
+    "repository": {
+      "pullRequest": {
+        "reviewThreads": {
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": null
+          },
+          "nodes": [
+            {
+              "id": "T1",
+              "isResolved": false,
+              "path": "src/first.js",
+              "line": 2,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 1,
+                    "id": "C1",
+                    "body": "<!-- mergejudge:inline key=src%2Ffirst.js%3A2 state=active -->\n\u2696\ufe0f **MergeJudge (AI):** first returns n+1 elements; return exactly n.",
+                    "author": {
+                      "login": "github-actions[bot]",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r1",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  },
+                  {
+                    "databaseId": 100,
+                    "id": "R1_0",
+                    "body": "> I already fixed the defect",
+                    "author": {
+                      "login": "alice",
+                      "__typename": "User"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r100",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  },
+                  {
+                    "databaseId": 101,
+                    "id": "R1_1",
+                    "body": "1234567",
+                    "author": {
+                      "login": "bob",
+                      "__typename": "User"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r101",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  },
+                  {
+                    "databaseId": 102,
+                    "id": "R1_2",
+                    "body": "Fixed in abc1234: corrected the slice bound.",
+                    "author": {
+                      "login": "helper[bot]",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r102",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            }
+          ]
+        },
+        "author": {
+          "login": "pr-author"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,4 @@
+# Review policy
+
+## Block until a human looks
+- `deploy/**` changes production; an owner must sign off.

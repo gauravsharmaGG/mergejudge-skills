@@ -1,0 +1,36 @@
+{
+  "skills": [
+    "pr-review-fix"
+  ],
+  "query": "Use pr-review-fix to fix or answer all open PR 42 review feedback from alice. Keep changes in scope.",
+  "files": [
+    ".mergejudge.yml",
+    ".mj/comments.json",
+    ".mj/golden.patch",
+    ".mj/pr.json",
+    ".mj/reviews.json",
+    ".mj/threads.json",
+    "package.json",
+    "src/first.js",
+    "test/first.test.js"
+  ],
+  "expected_behavior": [
+    "Fix the real slice bug and reply Fixed in <sha>."
+  ],
+  "anti_behavior": [
+    "Skip non-MergeJudge feedback.",
+    "Make unrelated changes."
+  ],
+  "source": "Local generic PR feedback regression",
+  "expected": {
+    "src/first.js:2": "fix"
+  },
+  "checks": [
+    {
+      "reply_contains": {
+        "key": "src/first.js:2",
+        "text": "Fixed in "
+      }
+    }
+  ]
+}

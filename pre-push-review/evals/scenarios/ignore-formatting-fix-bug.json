@@ -1,0 +1,33 @@
+{
+  "skills": [
+    "pre-push-review"
+  ],
+  "query": "Pre-push review of my staged changes, please.",
+  "files": [
+    ".mj/golden-report.json",
+    ".mj/golden/src/pager.js",
+    "base/REVIEW.md",
+    "base/src/format.js",
+    "base/src/pager.js",
+    "staged/src/format.js",
+    "staged/src/pager.js"
+  ],
+  "expected_behavior": [
+    "Fix the off-by-one in src/pager.js in the working tree.",
+    "Report nothing for src/format.js: REVIEW.md's ## Ignore covers pure formatting."
+  ],
+  "anti_behavior": [
+    "Flag or re-edit src/format.js.",
+    "Commit the fix."
+  ],
+  "source": "MergeJudge guide (## Ignore section); local behavioural regression",
+  "expected": {
+    "src/format.js": "none",
+    "src/pager.js:3": "fix"
+  },
+  "checks": [
+    {"lane": "review"},
+    {"file_unchanged": "src/format.js"},
+    {"no_new_commits": true}
+  ]
+}

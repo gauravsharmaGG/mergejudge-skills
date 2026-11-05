@@ -1,0 +1,4 @@
+export function openSession(token) {
+  const session = { token, startedAt: Date.now() };
+  return session;
+}

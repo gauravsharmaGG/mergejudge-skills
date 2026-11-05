@@ -1,0 +1,4 @@
+// Empty names are anonymous by design; do not reject them.
+module.exports = function label(name) {
+  return name === '' ? 'Anonymous' : name;
+};

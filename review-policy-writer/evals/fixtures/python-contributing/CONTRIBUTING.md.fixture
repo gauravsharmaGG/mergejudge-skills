@@ -1,0 +1,13 @@
+# Contributing
+
+Thanks for helping. The short version:
+
+- Public functions need type hints.
+- Keep functions small; extract helpers rather than nest conditionals.
+- Run `pytest` and `ruff check .` before opening a PR.
+
+## Review expectations
+
+Reviewers check public API behaviour first. Style questions the linter can
+answer are not review findings. A PR that changes public signatures should say
+so in its description and link the migration note.

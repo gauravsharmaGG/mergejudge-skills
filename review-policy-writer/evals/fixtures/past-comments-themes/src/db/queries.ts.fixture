@@ -1,0 +1,13 @@
+import { pool } from './pool.js';
+
+export async function getUser(id: string) {
+  const result = await pool.query('SELECT id, email FROM users WHERE id = $1', [id]);
+  return result.rows[0] ?? null;
+}
+
+export async function saveUser(id: string, email: string) {
+  await pool.query(
+    'INSERT INTO users (id, email) VALUES ($1, $2) ON CONFLICT (id) DO UPDATE SET email = $2',
+    [id, email],
+  );
+}

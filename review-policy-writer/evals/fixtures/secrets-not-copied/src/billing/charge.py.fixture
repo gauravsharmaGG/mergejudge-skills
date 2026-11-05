@@ -1,0 +1,9 @@
+"""Charge computation for the billing pipeline."""
+
+from __future__ import annotations
+
+
+def total_with_tax(amounts: list[int], tax_rate: float) -> int:
+    """Return the charged total: subtotal plus tax, rounded to whole units."""
+    subtotal = sum(amounts)
+    return round(subtotal * (1 + tax_rate))

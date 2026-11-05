@@ -1,0 +1,30 @@
+{
+  "skills": [
+    "pr-review-fix"
+  ],
+  "query": "Fix and answer all open MergeJudge findings on PR 42. Batch fixes into one commit and push, and reply as a human.",
+  "files": [
+    ".mergejudge.yml",
+    ".mj/comments.json",
+    ".mj/golden.patch",
+    ".mj/pr.json",
+    ".mj/reviews.json",
+    ".mj/threads.json",
+    "package.json",
+    "src/first.js",
+    "test/first.test.js"
+  ],
+  "expected_behavior": [
+    "Fix the slice bound, run tests, commit once, push once, and reply with the commit SHA.",
+    "Quote-only, seven-character and bot replies do not answer this thread."
+  ],
+  "anti_behavior": [
+    "Treat an invalid reply as answered.",
+    "Push without replying."
+  ],
+  "source": "MergeJudge answers.ts, inline.ts, runner46.diff; local behavioural regression",
+  "expected": {
+    "src/first.js:2": "fix"
+  },
+  "checks": []
+}

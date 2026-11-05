@@ -1,0 +1,5 @@
+from src.app import handler
+
+
+def test_unknown_type() -> None:
+    assert handler({"type": "nope"}) == {"status": "unknown"}

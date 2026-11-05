@@ -1,0 +1,109 @@
+{
+  "skills": [
+    "review-policy-writer"
+  ],
+  "query": "This Python repo needs a review policy file. Please write one.",
+  "files": [
+    ".mj/golden/REVIEW.md",
+    "CONTRIBUTING.md",
+    "pyproject.toml",
+    "src/mypkg/api.py",
+    "src/mypkg/core.py",
+    "tests/test_core.py"
+  ],
+  "expected_behavior": [
+    "Create REVIEW.md that reflects the Python toolchain: pytest and ruff, and the CONTRIBUTING.md team rule that public functions need type hints.",
+    "Leave CONTRIBUTING.md untouched.",
+    "Use generic reviewer wording with no JavaScript-ecosystem references."
+  ],
+  "anti_behavior": [
+    "Mention eslint or npm, which this repo does not use.",
+    "Edit or delete CONTRIBUTING.md or its team rules.",
+    "Restate the whole CONTRIBUTING.md; the policy stays a few dozen lines."
+  ],
+  "source": "Skill workflow steps 1, 2, 4; repo-facts.sh test/lint detection",
+  "expected": {
+    "target": "REVIEW.md"
+  },
+  "checks": [
+    {
+      "file_exists": "REVIEW.md"
+    },
+    {
+      "headings": {
+        "path": "REVIEW.md",
+        "required": [
+          "Review policy",
+          "What matters in this repo",
+          "Raise to review even if small",
+          "Block until a human looks",
+          "Ignore",
+          "Security expectations",
+          "Evidence and nits"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW.md",
+        "any_of": [
+          "pytest"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW.md",
+        "any_of": [
+          "ruff"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW.md",
+        "any_of": [
+          "type hint"
+        ]
+      }
+    },
+    {
+      "not_contains": {
+        "path": "REVIEW.md",
+        "text": [
+          "eslint",
+          "npm"
+        ]
+      }
+    },
+    {
+      "max_bytes": {
+        "path": "REVIEW.md",
+        "bytes": 8192
+      }
+    },
+    {
+      "not_contains": {
+        "path": "REVIEW.md",
+        "text": [
+          "auto-approve",
+          "always approve",
+          "skip security",
+          "lane: auto",
+          "approve everything"
+        ]
+      }
+    },
+    {
+      "no_secret_patterns": {
+        "path": "REVIEW.md"
+      }
+    },
+    {
+      "file_unchanged": "CONTRIBUTING.md"
+    },
+    {
+      "no_gh_writes": true
+    }
+  ]
+}

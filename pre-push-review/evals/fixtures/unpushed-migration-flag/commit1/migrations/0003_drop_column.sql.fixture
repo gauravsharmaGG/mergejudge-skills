@@ -1,0 +1,2 @@
+-- Drop the legacy flag; the release notes say it is unused.
+ALTER TABLE users DROP COLUMN legacy_flag;

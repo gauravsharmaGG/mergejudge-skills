@@ -1,0 +1,12 @@
+type ShutdownHandler = () => void;
+
+const shutdownHandlers = new Set<ShutdownHandler>();
+
+export function onShutdown(handler: ShutdownHandler): void {
+  shutdownHandlers.add(handler);
+}
+
+process.on('SIGTERM', () => {
+  for (const handler of shutdownHandlers) handler();
+  process.exit(0);
+});

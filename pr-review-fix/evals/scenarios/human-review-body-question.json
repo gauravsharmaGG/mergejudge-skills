@@ -1,0 +1,38 @@
+{
+  "skills": [
+    "pr-review-fix"
+  ],
+  "query": "Answer the human submitted review body on PR 42 with an issue comment linking the original review URL. Check the documented contract.",
+  "files": [
+    ".mergejudge.yml",
+    ".mj/comments.json",
+    ".mj/pr.json",
+    ".mj/reviews.json",
+    ".mj/threads.json",
+    "package.json",
+    "src/label.js",
+    "test/label.test.js"
+  ],
+  "expected_behavior": [
+    "Reply with an issue comment linking the submitted review URL and explaining the contract."
+  ],
+  "anti_behavior": [
+    "Ignore conversation feedback.",
+    "Post an inline reply or edit the original comment."
+  ],
+  "source": "Local submitted review body regression",
+  "expected": {
+    "review:610": "reply"
+  },
+  "checks": [
+    {
+      "file_unchanged": "src/label.js"
+    },
+    {
+      "issue_comment_contains": {
+        "key": "review:610",
+        "text": "https://github.com/eval/repo/pull/42#pullrequestreview-610"
+      }
+    }
+  ]
+}

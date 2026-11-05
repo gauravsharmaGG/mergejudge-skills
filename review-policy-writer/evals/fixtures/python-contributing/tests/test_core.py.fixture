@@ -1,0 +1,6 @@
+from mypkg.core import format_report
+
+
+def test_format_report_sorts_lines() -> None:
+    report = format_report([{"name": "b", "value": 2}, {"name": "a", "value": 1}])
+    assert report.splitlines()[0] == "- a: 1"

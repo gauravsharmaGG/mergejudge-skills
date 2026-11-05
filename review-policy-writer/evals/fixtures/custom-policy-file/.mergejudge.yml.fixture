@@ -1,0 +1,5 @@
+# MergeJudge configuration for this repository.
+policy_files:
+  - REVIEW_POLICY.md
+lanes:
+  max_auto_lines: 200

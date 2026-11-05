@@ -1,0 +1,45 @@
+{
+  "data": {
+    "repository": {
+      "pullRequest": {
+        "reviewThreads": {
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": null
+          },
+          "nodes": [
+            {
+              "id": "T2",
+              "isResolved": false,
+              "path": "src/label.js",
+              "line": 3,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 2,
+                    "id": "C2",
+                    "body": "<!-- mergejudge:inline key=src%2Flabel.js%3A3 state=active -->\n\u2696\ufe0f **MergeJudge (AI):** Reject empty names; otherwise anonymous labels leak through.",
+                    "author": {
+                      "login": "github-actions[bot]",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r2",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            }
+          ]
+        },
+        "author": {
+          "login": "pr-author"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "data": {
+    "repository": {
+      "pullRequest": {
+        "reviewThreads": {
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": null
+          },
+          "nodes": [
+            {
+              "id": "H1",
+              "isResolved": false,
+              "path": "src/first.js",
+              "line": 2,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 1,
+                    "id": "C1",
+                    "body": "first returns n+1 elements; return exactly n.",
+                    "author": {
+                      "login": "alice",
+                      "__typename": "User"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r1",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            }
+          ]
+        },
+        "author": {
+          "login": "pr-author"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,7 @@
+# Review policy
+
+## What matters in this repo
+- Authentication code is the most sensitive surface in this repo.
+
+## Block until a human looks
+- `src/auth/**` changes need a security reviewer.

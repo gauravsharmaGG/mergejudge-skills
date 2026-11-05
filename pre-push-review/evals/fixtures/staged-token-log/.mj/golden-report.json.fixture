@@ -1,0 +1,13 @@
+{
+  "lane": "review",
+  "base": "@@BASE@@",
+  "findings": [
+    {
+      "path": "src/session.js",
+      "line": 3,
+      "rule": "policy: do not log tokens",
+      "action": "fixed",
+      "note": "removed the staged console.log(\"token\", token); REVIEW.md says do not log tokens"
+    }
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "data": {
+    "repository": {
+      "pullRequest": {
+        "reviewThreads": {
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": null
+          },
+          "nodes": [
+            {
+              "id": "T10",
+              "isResolved": false,
+              "path": "legacy/store.js",
+              "line": 2,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 10,
+                    "id": "C10",
+                    "body": "<!-- mergejudge:inline key=legacy%2Fstore.js%3A2 state=active -->\n\u2696\ufe0f **MergeJudge (AI):** Replace this entire storage API with an async repository abstraction across all callers.",
+                    "author": {
+                      "login": "github-actions[bot]",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r10",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            }
+          ]
+        },
+        "author": {
+          "login": "pr-author"
+        }
+      }
+    }
+  }
+}

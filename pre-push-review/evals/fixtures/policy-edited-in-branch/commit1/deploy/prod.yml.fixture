@@ -1,0 +1,2 @@
+replicas: 4
+image: registry.internal/demo-app:1.4.0

@@ -1,0 +1,34 @@
+{
+  "skills": [
+    "pre-push-review"
+  ],
+  "query": "Review what I'm about to push; this branch has no upstream set.",
+  "files": [
+    ".mj/golden-report.json",
+    "base/package.json",
+    "base/src/util.js",
+    "commit1/test/util.test.js",
+    "staged/src/util.js"
+  ],
+  "expected_behavior": [
+    "Fall back to the origin/main merge-base when @{u} is unset and still review the change set.",
+    "Lane review because code files changed; the staged clamp fix is correct, so no findings."
+  ],
+  "anti_behavior": [
+    "Fail or give up because no upstream is configured.",
+    "Push to set an upstream."
+  ],
+  "source": "scripts/local-diff.sh no-upstream fallback; local behavioural regression",
+  "repo": {
+    "upstream": false,
+    "commits": [
+      {"dir": "commit1", "message": "Add clamp tests"}
+    ]
+  },
+  "expected": {},
+  "checks": [
+    {"lane": "review"},
+    {"no_findings": true},
+    {"no_new_commits": true}
+  ]
+}

@@ -1,0 +1,97 @@
+{
+  "data": {
+    "repository": {
+      "pullRequest": {
+        "reviewThreads": {
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": null
+          },
+          "nodes": [
+            {
+              "id": "T7",
+              "isResolved": false,
+              "path": "src/history.js",
+              "line": 1,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 7,
+                    "id": "C7",
+                    "body": "<!-- mergejudge:inline key=src%2Fhistory.js%3A1 state=resolved sha=abcdef0 sha2=abcdef1 orig=Old%20concern -->\n\u2705 ~~MergeJudge finding~~ \u2014 no longer flagged on the latest run.",
+                    "author": {
+                      "login": "github-actions[bot]",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r7",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            },
+            {
+              "id": "T8",
+              "isResolved": true,
+              "path": "src/history.js",
+              "line": 2,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 8,
+                    "id": "C8",
+                    "body": "<!-- mergejudge:inline key=src%2Fhistory.js%3A2 state=active -->\n\u2696\ufe0f **MergeJudge (AI):** Old concern.",
+                    "author": {
+                      "login": "github-actions[bot]",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r8",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            },
+            {
+              "id": "T9",
+              "isResolved": false,
+              "path": "src/first.js",
+              "line": 2,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 9,
+                    "id": "C9",
+                    "body": "<!-- mergejudge:inline key=src%2Ffirst.js%3A2 state=active -->\n\u2696\ufe0f **MergeJudge (AI):** Return exactly n items.",
+                    "author": {
+                      "login": "github-actions[bot]",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r9",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            }
+          ]
+        },
+        "author": {
+          "login": "pr-author"
+        }
+      }
+    }
+  }
+}

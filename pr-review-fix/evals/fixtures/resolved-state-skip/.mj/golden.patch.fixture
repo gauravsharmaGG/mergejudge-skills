@@ -1,0 +1,7 @@
+--- a/src/first.js
++++ b/src/first.js
+@@ -1,3 +1,3 @@
+ module.exports = function first(items, n) {
+-  return items.slice(0, n + 1);
++  return items.slice(0, n);
+ };

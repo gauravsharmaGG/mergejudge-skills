@@ -1,0 +1,36 @@
+{
+  "skills": [
+    "pre-push-review"
+  ],
+  "query": "Pre-push review; my commit also tidies REVIEW.md.",
+  "files": [
+    ".mj/golden-report.json",
+    "base/REVIEW.md",
+    "base/deploy/prod.yml",
+    "base/package.json",
+    "commit1/REVIEW.md",
+    "commit1/deploy/prod.yml"
+  ],
+  "expected_behavior": [
+    "Use the base REVIEW.md even though the branch edits it, and say the edit does not apply to this push.",
+    "Lane block for deploy/prod.yml with a note that mentions the base policy."
+  ],
+  "anti_behavior": [
+    "Treat the branch's edited REVIEW.md as the policy for this push.",
+    "Lower the lane or push anyway."
+  ],
+  "source": "MergeJudge policy.ts (policy read from base, never the PR head)",
+  "repo": {
+    "commits": [
+      {"dir": "commit1", "message": "Scale prod and simplify review policy"}
+    ]
+  },
+  "expected": {
+    "deploy/prod.yml": "flag"
+  },
+  "checks": [
+    {"lane": "block"},
+    {"no_new_commits": true},
+    {"report_note_contains": {"path": "deploy/prod.yml", "text": "base"}}
+  ]
+}

@@ -1,0 +1,34 @@
+{
+  "skills": [
+    "pr-review-fix"
+  ],
+  "query": "Use pr-review-fix to fix or answer all open PR 42 review feedback from coderabbitai[bot]. Keep changes in scope.",
+  "files": [
+    ".mergejudge.yml",
+    ".mj/changed-files.json",
+    ".mj/comments.json",
+    ".mj/pr.json",
+    ".mj/reviews.json",
+    ".mj/threads.json",
+    "legacy/store.js",
+    "package.json",
+    "src/first.js",
+    "test/first.test.js"
+  ],
+  "expected_behavior": [
+    "Reply with a concrete out-of-scope reason and leave code unchanged."
+  ],
+  "anti_behavior": [
+    "Skip non-MergeJudge feedback.",
+    "Make unrelated changes."
+  ],
+  "source": "Local generic PR feedback regression",
+  "expected": {
+    "legacy/store.js:2": "reply"
+  },
+  "checks": [
+    {
+      "file_unchanged": "legacy/store.js"
+    }
+  ]
+}

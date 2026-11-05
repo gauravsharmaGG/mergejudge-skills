@@ -1,0 +1,8 @@
+# Review policy
+
+## What matters in this repo
+- Do not log tokens or personal data; sessions are security-sensitive.
+- Every finding names the file and line and quotes the changed code.
+
+## Ignore
+- Formatting churn the linter would fix anyway.

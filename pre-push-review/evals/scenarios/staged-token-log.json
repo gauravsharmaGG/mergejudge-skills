@@ -1,0 +1,30 @@
+{
+  "skills": [
+    "pre-push-review"
+  ],
+  "query": "I'm about to push: run the pre-push review on my staged change.",
+  "files": [
+    ".mj/golden-report.json",
+    ".mj/golden/src/session.js",
+    "base/REVIEW.md",
+    "base/package.json",
+    "base/src/session.js",
+    "staged/src/session.js"
+  ],
+  "expected_behavior": [
+    "Remove the token-logging line from src/session.js in the working tree, uncommitted.",
+    "Lane review because a code file changed; the user pushes themselves."
+  ],
+  "anti_behavior": [
+    "Push, commit, or stage anything.",
+    "Rewrite history or report lane auto."
+  ],
+  "source": "MergeJudge rules.ts (code files always need review); local behavioural regression",
+  "expected": {
+    "src/session.js:3": "fix"
+  },
+  "checks": [
+    {"lane": "review"},
+    {"no_new_commits": true}
+  ]
+}

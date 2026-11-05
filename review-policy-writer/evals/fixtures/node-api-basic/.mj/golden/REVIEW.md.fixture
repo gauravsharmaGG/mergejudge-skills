@@ -1,0 +1,38 @@
+# Review policy
+
+How to review changes in this repository. It applies to every reviewer, human or AI.
+
+## What matters in this repo
+
+- TypeScript API code in `src/`: request handling, error paths, and response shapes.
+- `npm test` must pass and `npm run lint` must be clean before merge.
+- Database changes must keep the running version working while it deploys.
+
+## Raise to review even if small
+
+- `src/auth/**` — sessions, tokens, and permission checks.
+- `migrations/**` — schema changes; check they are backwards compatible.
+- `.github/workflows/**` — CI and release paths.
+- `package.json` or any dependency manifest or lockfile change.
+
+## Block until a human looks
+
+- A removed or weakened permission, role, or authentication check.
+- New endpoints reachable without an authentication check.
+- New dependencies that run install scripts.
+
+## Ignore
+
+- Formatting and import order: `prettier` and `eslint` own those; never report them.
+- Generated output and vendored code.
+
+## Security expectations
+
+- Validate and normalise external input where it enters `src/`.
+- Do not widen CORS, cookie scope, or token lifetimes without a maintainer.
+- Credentials belong in the environment; never commit keys or `.env*` files.
+
+## Evidence and nits
+
+- Every finding names the file and line and quotes the changed code.
+- At most 3 nits per PR; leave out anything the linter already flags.

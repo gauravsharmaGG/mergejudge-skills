@@ -1,0 +1,32 @@
+# Review policy
+
+Short on purpose: `AGENTS.md` already uses most of the shared 8 KB policy budget that reviewers read.
+
+## What matters in this repo
+
+- TypeScript service code in `src/`: correct startup, shutdown, and error handling.
+- `npm test` must pass before merge.
+
+## Raise to review even if small
+
+- `src/**` error handling and process exit paths.
+- Dependency manifest or lockfile changes.
+
+## Block until a human looks
+
+- A removed or weakened permission or authentication check.
+- Any committed secret, token, or credential.
+
+## Ignore
+
+- Formatting and import order; never report whitespace.
+- Generated files and vendored code.
+
+## Security expectations
+
+- Credentials belong in the environment; never commit keys or `.env*` files.
+
+## Evidence and nits
+
+- Every finding names the file and line and quotes the changed code.
+- At most 3 nits per PR.

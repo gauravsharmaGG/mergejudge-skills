@@ -1,0 +1,13 @@
+{
+  "lane": "block",
+  "base": "@@BASE@@",
+  "findings": [
+    {
+      "path": "src/config.js",
+      "line": 6,
+      "rule": "secret: hard-coded api key",
+      "action": "flagged",
+      "note": "hard-coded api_key matches the secret patterns; it is removed from the working tree, but the unpushed commit still contains it, so you must rewrite that commit yourself before pushing"
+    }
+  ]
+}

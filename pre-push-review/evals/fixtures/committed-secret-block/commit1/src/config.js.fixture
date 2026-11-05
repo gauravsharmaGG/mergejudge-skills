@@ -1,0 +1,6 @@
+export const config = {
+  region: "eu-central-1",
+  retries: 2,
+};
+
+config.api_key = "abc123def456ghi789";

@@ -1,0 +1,15 @@
+"""Public HTTP interface."""
+
+from __future__ import annotations
+
+import httpx
+
+from .core import format_report
+
+
+async def fetch_report(url: str) -> str:
+    """Fetch a report payload and return it formatted."""
+    async with httpx.AsyncClient() as client:
+        response = await client.get(url)
+        response.raise_for_status()
+        return format_report(response.json())

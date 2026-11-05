@@ -1,0 +1,33 @@
+# Review policy
+
+How to review changes in this repository. It applies to every reviewer, human or AI.
+
+## What matters in this repo
+
+- Every database call must be awaited before its result is used; a floating promise in `src/db/**` is a finding (a recurring theme in past reviews).
+- `npm test` must pass before merge.
+
+## Raise to review even if small
+
+- `src/db/**` — query construction, transactions, and connection handling.
+- Anything that changes a SQL string or its parameters.
+
+## Block until a human looks
+
+- SQL built by concatenation instead of bound parameters.
+- A removed or weakened permission or authentication check.
+
+## Ignore
+
+- Formatting; the repo has no formatter config yet, so never relitigate whitespace.
+- One-off naming or typo nits already raised on a specific PR.
+
+## Security expectations
+
+- Always bind user input as query parameters; never splice it into SQL text.
+- Credentials belong in the environment; never commit keys or `.env*` files.
+
+## Evidence and nits
+
+- Every finding names the file and line and quotes the changed code.
+- At most 3 nits per PR.

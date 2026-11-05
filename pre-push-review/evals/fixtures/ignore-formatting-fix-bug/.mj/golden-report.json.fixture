@@ -1,0 +1,13 @@
+{
+  "lane": "review",
+  "base": "@@BASE@@",
+  "findings": [
+    {
+      "path": "src/pager.js",
+      "line": 3,
+      "rule": "correctness: loop bound",
+      "action": "fixed",
+      "note": "restored i < items.length; the staged edit introduced an off-by-one past the end. src/format.js is whitespace-only churn, ignored per ## Ignore"
+    }
+  ]
+}

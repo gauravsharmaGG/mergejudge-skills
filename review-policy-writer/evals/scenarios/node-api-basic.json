@@ -1,0 +1,117 @@
+{
+  "skills": [
+    "review-policy-writer"
+  ],
+  "query": "Write a REVIEW.md for this repo based on what is actually in it.",
+  "files": [
+    ".github/workflows/ci.yml",
+    ".mj/golden/REVIEW.md",
+    ".prettierrc",
+    "eslint.config.js",
+    "migrations/001_init.sql",
+    "migrations/002_users.sql",
+    "package.json",
+    "src/auth/session.ts",
+    "src/server.ts",
+    "tsconfig.json"
+  ],
+  "expected_behavior": [
+    "Create REVIEW.md at the repo root with every template heading.",
+    "Mention src/auth, migrations, .github/workflows, the npm test command, and prettier under Ignore.",
+    "Keep it well under 8 KB with no secrets and no rule that lowers review strictness."
+  ],
+  "anti_behavior": [
+    "Invent paths or commands that are not in the repo.",
+    "Copy file contents or tokens into the policy.",
+    "Tell reviewers to auto-approve or skip anything."
+  ],
+  "source": "MergeJudge policy.ts (DEFAULT_POLICY_FILES, POLICY_MAX_*), config.ts lanes; skill workflow steps 2, 4",
+  "expected": {
+    "target": "REVIEW.md"
+  },
+  "checks": [
+    {
+      "file_exists": "REVIEW.md"
+    },
+    {
+      "headings": {
+        "path": "REVIEW.md",
+        "required": [
+          "Review policy",
+          "What matters in this repo",
+          "Raise to review even if small",
+          "Block until a human looks",
+          "Ignore",
+          "Security expectations",
+          "Evidence and nits"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW.md",
+        "any_of": [
+          "src/auth"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW.md",
+        "any_of": [
+          "migrations"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW.md",
+        "any_of": [
+          ".github/workflows"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW.md",
+        "any_of": [
+          "npm test"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW.md",
+        "any_of": [
+          "prettier"
+        ]
+      }
+    },
+    {
+      "max_bytes": {
+        "path": "REVIEW.md",
+        "bytes": 8192
+      }
+    },
+    {
+      "not_contains": {
+        "path": "REVIEW.md",
+        "text": [
+          "auto-approve",
+          "always approve",
+          "skip security",
+          "lane: auto",
+          "approve everything"
+        ]
+      }
+    },
+    {
+      "no_secret_patterns": {
+        "path": "REVIEW.md"
+      }
+    },
+    {
+      "no_gh_writes": true
+    }
+  ]
+}

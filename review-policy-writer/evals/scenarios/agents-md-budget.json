@@ -1,0 +1,84 @@
+{
+  "skills": [
+    "review-policy-writer"
+  ],
+  "query": "Add a REVIEW.md to this repo. Mind the shared policy byte budget: AGENTS.md is already large.",
+  "files": [
+    ".mj/golden/REVIEW.md",
+    "AGENTS.md",
+    "package.json",
+    "src/index.ts"
+  ],
+  "expected_behavior": [
+    "Write a short REVIEW.md so AGENTS.md plus REVIEW.md together stay within MergeJudge's 8 KB shared policy budget.",
+    "Acknowledge the shared budget with AGENTS.md in the file.",
+    "Keep every required template heading despite the tight budget."
+  ],
+  "anti_behavior": [
+    "Write a long policy that pushes the combined policy files over 8192 bytes.",
+    "Trim or rewrite AGENTS.md to make room.",
+    "Drop required sections to save bytes."
+  ],
+  "source": "MergeJudge policy.ts (POLICY_MAX_TOTAL 8 KB shared fairly, fairShares truncation); check-policy.py total check",
+  "expected": {
+    "target": "REVIEW.md"
+  },
+  "checks": [
+    {
+      "file_exists": "REVIEW.md"
+    },
+    {
+      "headings": {
+        "path": "REVIEW.md",
+        "required": [
+          "Review policy",
+          "What matters in this repo",
+          "Raise to review even if small",
+          "Block until a human looks",
+          "Ignore",
+          "Security expectations",
+          "Evidence and nits"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW.md",
+        "any_of": [
+          "AGENTS.md"
+        ]
+      }
+    },
+    {
+      "policy_budget": {
+        "bytes": 8192
+      }
+    },
+    {
+      "max_bytes": {
+        "path": "REVIEW.md",
+        "bytes": 8192
+      }
+    },
+    {
+      "not_contains": {
+        "path": "REVIEW.md",
+        "text": [
+          "auto-approve",
+          "always approve",
+          "skip security",
+          "lane: auto",
+          "approve everything"
+        ]
+      }
+    },
+    {
+      "no_secret_patterns": {
+        "path": "REVIEW.md"
+      }
+    },
+    {
+      "no_gh_writes": true
+    }
+  ]
+}

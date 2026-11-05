@@ -1,0 +1,85 @@
+{
+  "skills": [
+    "review-policy-writer"
+  ],
+  "query": "Generate our review policy file for this repo.",
+  "files": [
+    ".mergejudge.yml",
+    ".mj/golden/REVIEW_POLICY.md",
+    "package.json",
+    "src/index.js"
+  ],
+  "expected_behavior": [
+    "Honour .mergejudge.yml policy_files and write REVIEW_POLICY.md, not REVIEW.md.",
+    "Leave .mergejudge.yml itself untouched.",
+    "Use the standard template headings in the new file."
+  ],
+  "anti_behavior": [
+    "Create REVIEW.md alongside or instead of REVIEW_POLICY.md.",
+    "Rewrite or reformat .mergejudge.yml.",
+    "Disable policy injection by editing the config."
+  ],
+  "source": "MergeJudge config.ts policy_files (list, max 10); skill workflow step 1",
+  "expected": {
+    "target": "REVIEW_POLICY.md"
+  },
+  "checks": [
+    {
+      "file_exists": "REVIEW_POLICY.md"
+    },
+    {
+      "file_absent": "REVIEW.md"
+    },
+    {
+      "headings": {
+        "path": "REVIEW_POLICY.md",
+        "required": [
+          "Review policy",
+          "What matters in this repo",
+          "Raise to review even if small",
+          "Block until a human looks",
+          "Ignore",
+          "Security expectations",
+          "Evidence and nits"
+        ]
+      }
+    },
+    {
+      "contains": {
+        "path": "REVIEW_POLICY.md",
+        "any_of": [
+          "npm test"
+        ]
+      }
+    },
+    {
+      "max_bytes": {
+        "path": "REVIEW_POLICY.md",
+        "bytes": 8192
+      }
+    },
+    {
+      "not_contains": {
+        "path": "REVIEW_POLICY.md",
+        "text": [
+          "auto-approve",
+          "always approve",
+          "skip security",
+          "lane: auto",
+          "approve everything"
+        ]
+      }
+    },
+    {
+      "no_secret_patterns": {
+        "path": "REVIEW_POLICY.md"
+      }
+    },
+    {
+      "file_unchanged": ".mergejudge.yml"
+    },
+    {
+      "no_gh_writes": true
+    }
+  ]
+}

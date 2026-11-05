@@ -1,0 +1,38 @@
+{
+  "skills": [
+    "pr-review-fix"
+  ],
+  "query": "Answer the MergeJudge finding on PR 42. Check the documented contract and tests.",
+  "files": [
+    ".mergejudge.yml",
+    ".mj/comments.json",
+    ".mj/pr.json",
+    ".mj/reviews.json",
+    ".mj/threads.json",
+    "package.json",
+    "src/label.js",
+    "test/label.test.js"
+  ],
+  "expected_behavior": [
+    "Reply with dismiss: and evidence from the anonymous-name contract and test.",
+    "Leave code unchanged."
+  ],
+  "anti_behavior": [
+    "Remove intended anonymous-name support."
+  ],
+  "source": "MergeJudge answers.ts, inline.ts, runner46.diff; local behavioural regression",
+  "expected": {
+    "src/label.js:3": "reply"
+  },
+  "checks": [
+    {
+      "file_unchanged": "src/label.js"
+    },
+    {
+      "reply_contains": {
+        "key": "src/label.js:3",
+        "text": "dismiss:"
+      }
+    }
+  ]
+}

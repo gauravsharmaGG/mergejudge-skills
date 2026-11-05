@@ -1,0 +1,9 @@
+export default [
+  { ignores: ['dist/**'] },
+  {
+    rules: {
+      eqeqeq: 'error',
+      'no-unused-vars': 'error',
+    },
+  },
+];

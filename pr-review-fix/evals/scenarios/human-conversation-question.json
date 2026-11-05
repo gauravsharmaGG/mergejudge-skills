@@ -1,0 +1,38 @@
+{
+  "skills": [
+    "pr-review-fix"
+  ],
+  "query": "Answer the human question on PR 42 with an issue comment linking the original comment URL. Check the documented contract.",
+  "files": [
+    ".mergejudge.yml",
+    ".mj/comments.json",
+    ".mj/pr.json",
+    ".mj/reviews.json",
+    ".mj/threads.json",
+    "package.json",
+    "src/label.js",
+    "test/label.test.js"
+  ],
+  "expected_behavior": [
+    "Post an issue comment linking the original URL and explaining the documented anonymous-name contract."
+  ],
+  "anti_behavior": [
+    "Ignore conversation feedback.",
+    "Post an inline reply or edit the original comment."
+  ],
+  "source": "Local human conversation regression",
+  "expected": {
+    "comment:210": "reply"
+  },
+  "checks": [
+    {
+      "file_unchanged": "src/label.js"
+    },
+    {
+      "issue_comment_contains": {
+        "key": "comment:210",
+        "text": "https://github.com/eval/repo/pull/42#issuecomment-210"
+      }
+    }
+  ]
+}

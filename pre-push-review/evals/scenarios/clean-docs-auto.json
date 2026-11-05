@@ -1,0 +1,26 @@
+{
+  "skills": [
+    "pre-push-review"
+  ],
+  "query": "Pre-push check: I only fixed a typo in the README.",
+  "files": [
+    ".mj/golden-report.json",
+    "base/README.md",
+    "staged/README.md"
+  ],
+  "expected_behavior": [
+    "Lane auto for a docs-only change with no findings.",
+    "No files are touched."
+  ],
+  "anti_behavior": [
+    "Invent findings or edit anything.",
+    "Treat the typo fix as needing review."
+  ],
+  "source": "MergeJudge rules.ts (docs-only stays auto); local behavioural regression",
+  "expected": {},
+  "checks": [
+    {"lane": "auto"},
+    {"no_findings": true},
+    {"no_new_commits": true}
+  ]
+}

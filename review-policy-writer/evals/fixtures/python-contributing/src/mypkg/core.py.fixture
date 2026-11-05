@@ -1,0 +1,9 @@
+"""Report formatting core."""
+
+from __future__ import annotations
+
+
+def format_report(items: list[dict[str, object]]) -> str:
+    """Render report rows in a stable, sorted order."""
+    lines = [f"- {item['name']}: {item['value']}" for item in items]
+    return "\n".join(sorted(lines))

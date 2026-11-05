@@ -1,0 +1,10 @@
+{
+  "number": 42,
+  "headRefName": "eval-head",
+  "headRefOid": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+  "baseRefName": "main",
+  "url": "https://github.com/eval/repo/pull/42",
+  "author": {
+    "login": "pr-author"
+  }
+}

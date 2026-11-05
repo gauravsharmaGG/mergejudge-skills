@@ -1,0 +1,7 @@
+"""Runtime settings."""
+
+DEFAULT_TIMEOUT_S = 30
+MAX_RETRIES = 3
+
+# Legacy fallback kept for the migration period; do not extend its use.
+api_key = "fakefakefakefake1234"

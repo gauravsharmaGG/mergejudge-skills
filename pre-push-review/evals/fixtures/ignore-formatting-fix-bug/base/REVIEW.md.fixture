@@ -1,0 +1,7 @@
+# Review policy
+
+## What matters in this repo
+- Loop bounds and pagination math must be correct.
+
+## Ignore
+- Pure formatting and whitespace-only churn; the linter owns style.

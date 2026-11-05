@@ -1,0 +1,2 @@
+// Stable legacy API, unchanged by this PR.
+module.exports = { load: key => ({ key }) };

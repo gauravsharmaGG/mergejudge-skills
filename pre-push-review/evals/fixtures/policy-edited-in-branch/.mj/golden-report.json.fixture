@@ -1,0 +1,13 @@
+{
+  "lane": "block",
+  "base": "@@BASE@@",
+  "findings": [
+    {
+      "path": "deploy/prod.yml",
+      "line": 1,
+      "rule": "policy: deploy/**",
+      "action": "flagged",
+      "note": "the base policy (REVIEW.md at the base ref) blocks deploy/**; the branch's REVIEW.md edit does not apply to this push, so an owner sign-off is still needed"
+    }
+  ]
+}

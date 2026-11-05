@@ -1,0 +1,1 @@
+{"private":true,"scripts":{"test":"node test/label.test.js","lint":"node --check src/label.js"}}

@@ -1,0 +1,6 @@
+# Review policy (draft)
+
+## Team rules
+
+- Always run `make check` before merging; it is the gate CI uses.
+- Database changes need two approvals from the data team.

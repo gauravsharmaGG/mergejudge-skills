@@ -1,0 +1,38 @@
+# Review policy
+
+How to review changes in this repository. It applies to every reviewer, human or AI.
+
+## Team rules
+
+- Always run `make check` before merging; it is the gate CI uses.
+- Database changes need two approvals from the data team.
+
+## What matters in this repo
+
+- `make check` must pass before merge; it runs `make test` and the linter.
+- Dispatch behaviour in `src/app.py`: unknown input must stay on the safe path.
+
+## Raise to review even if small
+
+- Database changes (two approvals required; see Team rules).
+- Any new event type wired into `src/app.py`.
+
+## Block until a human looks
+
+- A removed or weakened permission or authentication check.
+- Changes to how malformed or unhandled input is treated.
+
+## Ignore
+
+- Formatting and import order: the linter owns those; never report them.
+- Test data churn in `tests/`.
+
+## Security expectations
+
+- Validate event payloads at the boundary before dispatch.
+- Credentials belong in the environment; never commit keys or `.env*` files.
+
+## Evidence and nits
+
+- Every finding names the file and line and quotes the changed code.
+- At most 3 nits per PR.

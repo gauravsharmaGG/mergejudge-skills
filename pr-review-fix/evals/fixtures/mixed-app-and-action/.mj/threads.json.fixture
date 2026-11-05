@@ -1,0 +1,109 @@
+{
+  "data": {
+    "repository": {
+      "pullRequest": {
+        "reviewThreads": {
+          "pageInfo": {
+            "hasNextPage": false,
+            "endCursor": null
+          },
+          "nodes": [
+            {
+              "id": "T3",
+              "isResolved": false,
+              "path": "src/first.js",
+              "line": 2,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 3,
+                    "id": "C3",
+                    "body": "<!-- mergejudge:inline key=src%2Ffirst.js%3A2 state=active -->\n\u2696\ufe0f **MergeJudge (AI):** The slice returns one extra element.",
+                    "author": {
+                      "login": "GitHub-Actions",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r3",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            },
+            {
+              "id": "T4",
+              "isResolved": false,
+              "path": "src/label.js",
+              "line": 2,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 4,
+                    "id": "C4",
+                    "body": "<!-- mergejudge:inline key=src%2Flabel.js%3A2 state=active -->\n\u2696\ufe0f **MergeJudge (AI):** Empty input should be rejected.",
+                    "author": {
+                      "login": "github-actions[bot]",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r4",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  },
+                  {
+                    "databaseId": 400,
+                    "id": "R4_0",
+                    "body": "Anonymous labels are part of the documented contract.",
+                    "author": {
+                      "login": "maintainer",
+                      "__typename": "User"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r400",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            },
+            {
+              "id": "T5",
+              "isResolved": false,
+              "path": "src/label.js",
+              "line": 3,
+              "comments": {
+                "nodes": [
+                  {
+                    "databaseId": 5,
+                    "id": "C5",
+                    "body": "<!-- mergejudge:inline key=src%2Flabel.js%3A3 state=active -->\n\u2696\ufe0f **MergeJudge (AI):** Anonymous labels should be disallowed.",
+                    "author": {
+                      "login": "mergejudge[bot]",
+                      "__typename": "Bot"
+                    },
+                    "url": "https://github.com/eval/repo/pull/42#discussion_r5",
+                    "createdAt": "2026-11-03T10:00:00Z",
+                    "updatedAt": "2026-11-03T10:00:00Z"
+                  }
+                ],
+                "pageInfo": {
+                  "hasNextPage": false,
+                  "endCursor": null
+                }
+              }
+            }
+          ]
+        },
+        "author": {
+          "login": "pr-author"
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,138 @@
+# AGENTS.md
+
+Guidance for coding agents (and humans) working in this repository. Read it
+before making changes. It intentionally repeats the basics: agents arrive with
+no memory of previous sessions, and a rule that is only implied is a rule that
+gets broken.
+
+## Setup
+
+Clone, then run `npm install`. Node 22 is the supported runtime; the build uses
+the TypeScript compiler configured in `tsconfig.json`. The service is a small
+edge worker: it starts, registers shutdown handlers, and exits cleanly when the
+platform asks it to. There is no database and no background queue.
+
+## Commands
+
+- `npm run build` — type-check and emit to `dist/`.
+- `npm test` — run the unit suite once. Use this before declaring work done.
+- `node dist/index.js` — start the service locally.
+
+Never add a watch mode to CI. Never run the built service with production
+environment variables on a developer machine.
+
+## Code conventions
+
+- TypeScript strict mode is on; do not weaken `tsconfig.json` to make an error
+  disappear. Fix the error instead.
+- Prefer explicit types at module boundaries (`export`ed functions) and let the
+  compiler infer locals.
+- Errors are handled at the edge: catch, log with context, and keep serving.
+  A handler must never leave a promise unobserved.
+- Shutdown handlers must be idempotent and fast; the platform gives the process
+  a short window and then kills it.
+- No new dependencies without a comment explaining what they replace and why
+  the platform's built-ins are not enough.
+
+## Testing expectations
+
+Every change to `src/` comes with or updates a test that fails without it.
+Tests live next to the code as `*.test.ts`. Do not delete or skip a failing
+test to get a green run; that is a reportable incident, not a fix. If a test is
+wrong, fix the test and say so in the PR description.
+
+## PR etiquette
+
+- One logical change per PR. Drive-by renames are not welcome.
+- The PR description states: what changed, why, how it was tested, and how to
+  revert it.
+- Keep diffs small. A PR that touches more than a dozen files needs a plan in
+  the description or it will be sent back.
+- Do not force-push over a branch someone else has reviewed; add commits and
+  let review follow the trail.
+
+## Communication
+
+When you are unsure between two approaches, stop and ask in the PR draft
+instead of guessing and defending the guess later. When a reviewer asks for a
+change you disagree with, implement it or make the counter-argument with
+evidence; never silently ignore a review comment. Report anything that looked
+wrong but was out of scope so a human can file it.
+
+## Escalation
+
+Stop and escalate to a human when: a change would alter authentication,
+authorization, or secret handling; a dependency introduces native builds; a
+migration of stored data would be needed; or CI fails for a reason you cannot
+explain in one sentence. These are not agent decisions.
+
+## Notes on history
+
+This file grew out of several incidents where an agent optimised locally and
+broke globally: a shutdown handler that threw synchronously and skipped the
+rest, a test deleted because it was "flaky" (it was not), and a dependency
+added to avoid reading platform docs. Each rule above traces to a real
+failure. When a rule blocks legitimate work, change the rule in a PR of its
+own rather than working around it quietly.
+
+## Reminders
+
+Re-read the conventions section after long sessions; context drift is the most
+common source of avoidable mistakes. Prefer boring, obvious code over clever
+code. The service is small on purpose; keep it that way. When in doubt, write
+the comment you wish you had found. Delete dead code in the same PR that made
+it dead. Do not leave TODOs without an owner. Ask early, not after a wrong
+implementation has been reviewed. Measure before claiming a performance win.
+Keep logs greppable. Treat every new dependency as a permanent guest. The
+build stays deterministic: no network access at build time. Local development
+stays offline-first. The repository stays lint-clean at every commit, not just
+at release time.
+
+## Working with the platform
+
+The edge platform cold-starts processes often, so module-level work must stay
+cheap: no reading large files at import time, no opening sockets, no spawning
+threads that outlive a request. Configuration arrives through environment
+variables with stable names; parsing happens once in a dedicated module and
+everything else consumes the parsed result. If a configuration value is
+missing, fail fast with a message that names the variable. Never guess a
+default for a security-relevant setting.
+
+Time and randomness come from injected abstractions, never from direct calls,
+so tests stay deterministic. Clock skew between the platform and your machine
+is real: never compare timestamps across that boundary without a stated
+tolerance. Retries use jittered backoff and a bounded budget; a retry loop
+without a budget is a bug.
+
+## Reviewing agent work
+
+Humans reviewing agent-authored PRs in this repository should read the diff
+before the description: the description states intent, the diff states fact.
+Watch for the classic failure modes — tests adjusted to fit broken behaviour,
+errors swallowed to make a loop terminate, types loosened one `any` at a time,
+and helper functions extracted for reuse that nothing reuses. Ask for the
+revert plan explicitly; if the author cannot produce one, the change is not
+ready.
+
+Agents reviewing human work apply the same standards in reverse. Do not
+approve a change because the author is senior; approve it because the diff is
+correct. When you cannot understand a change well enough to defend it, say
+that plainly instead of approving with a hedge.
+
+## Glossary
+
+- Edge worker: a short-lived process the platform starts near traffic and
+  disposes of. Assume any process can disappear between two lines.
+- Shutdown handler: a callback registered at import time and run once on
+  SIGTERM. Idempotent, fast, ordered.
+- Budget (policy): the shared byte allowance this file and other policy files
+  draw from. Long files get truncated, so brevity here is a feature, not a
+  style preference.
+
+## Ownership
+
+The `src/` tree is owned collectively; nothing in it requires a specific
+person's sign-off beyond normal review. The platform configuration files are
+owned by the on-call rotation: propose a change, do not merge it unreviewed.
+When ownership is unclear, the default is one review from whoever knows the
+area best, found by `git log`, not by asking in a channel and waiting.

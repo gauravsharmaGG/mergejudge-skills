@@ -1,0 +1,19 @@
+"""Small event-handling app."""
+
+from __future__ import annotations
+
+from collections.abc import Callable
+
+Handler = Callable[[dict[str, str]], dict[str, str]]
+
+
+def unknown(_event: dict[str, str]) -> dict[str, str]:
+    return {"status": "unknown"}
+
+
+ACTIONS: dict[str, Handler] = {}
+
+
+def handler(event: dict[str, str]) -> dict[str, str]:
+    action: Handler = ACTIONS.get(event.get("type", ""), unknown)
+    return action(event)

@@ -1,0 +1,35 @@
+# Review policy
+
+How to review changes in this repository. It applies to every reviewer, human or AI.
+
+## What matters in this repo
+
+- Public functions need type hints; a public name without an annotation is a finding.
+- `pytest` must pass and `ruff check .` must be clean before merge.
+- `src/mypkg/api.py` is the public surface: keep its behaviour and response shapes stable.
+
+## Raise to review even if small
+
+- Changes to public function signatures or return types in `src/mypkg/`.
+- New runtime dependencies in `pyproject.toml`.
+- Changes to packaging metadata or installed entry points.
+
+## Block until a human looks
+
+- A removed or weakened permission or authentication check.
+- New endpoints or outbound network calls.
+
+## Ignore
+
+- Line length, import order, and formatting: `ruff` owns those; never report them.
+- Test-only typing relaxations that keep `pytest` green.
+
+## Security expectations
+
+- Validate inputs at the boundary in `src/mypkg/api.py` before they reach `core.py`.
+- Credentials belong in the environment; never commit keys or `.env*` files.
+
+## Evidence and nits
+
+- Every finding names the file and line and quotes the changed code.
+- At most 3 nits per PR; leave out anything the linter already flags.

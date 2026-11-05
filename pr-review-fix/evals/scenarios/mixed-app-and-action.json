@@ -1,0 +1,35 @@
+{
+  "skills": [
+    "pr-review-fix"
+  ],
+  "query": "Clear the open MergeJudge findings on PR 42, including the hosted App. Report which threads count toward the Action gate and the current round/cap. Do not re-answer answered threads.",
+  "files": [
+    ".mergejudge.yml",
+    ".mj/comments.json",
+    ".mj/golden.patch",
+    ".mj/pr.json",
+    ".mj/reviews.json",
+    ".mj/threads.json",
+    "package.json",
+    "src/first.js",
+    "src/label.js",
+    "test/first.test.js",
+    "test/label.test.js"
+  ],
+  "expected_behavior": [
+    "Fix and reply to the open Action bug; reply to the App false positive.",
+    "Only Action findings count toward the gate; report round 2 of 3.",
+    "Do not re-answer the human-answered Action thread."
+  ],
+  "anti_behavior": [
+    "Ignore the hosted App.",
+    "Count hosted App findings toward the Action gate."
+  ],
+  "source": "MergeJudge answers.ts, inline.ts, runner46.diff; local behavioural regression",
+  "expected": {
+    "src/first.js:2": "fix",
+    "src/label.js:2": "none",
+    "src/label.js:3": "reply"
+  },
+  "checks": []
+}

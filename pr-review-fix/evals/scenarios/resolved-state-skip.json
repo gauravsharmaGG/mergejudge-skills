@@ -1,0 +1,32 @@
+{
+  "skills": [
+    "pr-review-fix"
+  ],
+  "query": "Clear current MergeJudge findings on PR 42. Skip findings already resolved by MergeJudge or GitHub.",
+  "files": [
+    ".mergejudge.yml",
+    ".mj/comments.json",
+    ".mj/golden.patch",
+    ".mj/pr.json",
+    ".mj/reviews.json",
+    ".mj/threads.json",
+    "package.json",
+    "src/first.js",
+    "src/history.js",
+    "test/first.test.js"
+  ],
+  "expected_behavior": [
+    "Skip both forms of resolved thread.",
+    "Fix and reply to the active bound bug."
+  ],
+  "anti_behavior": [
+    "Re-answer resolved threads."
+  ],
+  "source": "MergeJudge answers.ts, inline.ts, runner46.diff; local behavioural regression",
+  "expected": {
+    "src/history.js:1": "none",
+    "src/history.js:2": "none",
+    "src/first.js:2": "fix"
+  },
+  "checks": []
+}

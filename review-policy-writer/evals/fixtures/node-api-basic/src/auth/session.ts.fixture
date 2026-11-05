@@ -1,0 +1,23 @@
+import { createHmac } from 'node:crypto';
+
+export interface Session {
+  userId: string;
+  expiresAt: number;
+}
+
+export function sign(session: Session, secret: string): string {
+  const body = Buffer.from(JSON.stringify(session)).toString('base64url');
+  const mac = createHmac('sha256', secret).update(body).digest('base64url');
+  return `${body}.${mac}`;
+}
+
+export function readSession(cookie: string | undefined): Session | null {
+  if (!cookie) return null;
+  const match = /(?:^|;\s*)session=([^;]+)/.exec(cookie);
+  if (!match) return null;
+  try {
+    return JSON.parse(Buffer.from(match[1].split('.')[0], 'base64url').toString()) as Session;
+  } catch {
+    return null;
+  }
+}

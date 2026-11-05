@@ -1,0 +1,8 @@
+{
+  "name": "demo-app",
+  "private": true,
+  "version": "1.4.0",
+  "scripts": {
+    "test": "node --test test/"
+  }
+}

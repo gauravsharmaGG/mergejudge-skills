@@ -1,0 +1,8 @@
+# Review policy
+
+## Raise to review even if small
+- `**/migrations/**` may be destructive; a DBA must sign off.
+- `docs/**` changes are fine to skim.
+
+## Block until a human looks
+- Anything that deletes customer data.

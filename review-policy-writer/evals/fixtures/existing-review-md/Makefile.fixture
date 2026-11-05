@@ -1,0 +1,9 @@
+.PHONY: test check lint
+
+test:
+	python -m pytest tests
+
+check: test lint
+
+lint:
+	python -m ruff check src tests

@@ -1,0 +1,34 @@
+# Review policy
+
+How to review changes in this repository. It applies to every reviewer, human or AI.
+
+## What matters in this repo
+
+- Billing arithmetic in `src/billing/**`: totals, rounding, and tax rates.
+- Money values never change representation silently.
+
+## Raise to review even if small
+
+- `src/billing/**` — every charge-path change, however small.
+- `config/settings.py` — runtime settings and the legacy fallback.
+- `.env*` files appearing in a diff at all.
+
+## Block until a human looks
+
+- Any secret, token, or credential committed anywhere in the repository.
+- New outbound calls that send customer or billing data off the platform.
+
+## Ignore
+
+- Formatting and import order; never report whitespace.
+- Comment and docstring rewording that changes no behaviour.
+
+## Security expectations
+
+- Credentials belong in the environment; never commit keys or `.env*` files.
+- Never quote a secret value in a finding; cite the file and line only.
+
+## Evidence and nits
+
+- Every finding names the file and line and quotes the changed code (except secrets: cite the path only).
+- At most 3 nits per PR.

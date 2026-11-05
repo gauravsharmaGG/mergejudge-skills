@@ -1,0 +1,4 @@
+export const config = {
+  region: "eu-central-1",
+  retries: 2,
+};
